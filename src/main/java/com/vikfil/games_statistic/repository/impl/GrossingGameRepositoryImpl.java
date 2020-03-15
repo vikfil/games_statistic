@@ -4,7 +4,6 @@ import com.vikfil.games_statistic.model.GameDescription;
 import com.vikfil.games_statistic.repository.GameRepository;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -15,8 +14,7 @@ public class GrossingGameRepositoryImpl  implements GameRepository {
     public GrossingGameRepositoryImpl(RedisTemplate<String, GameDescription> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-
-
+    
     @Override
     public void save(List<GameDescription> gameDescription) {
         redisTemplate.opsForList().rightPushAll(GROSSING_GAME, gameDescription);

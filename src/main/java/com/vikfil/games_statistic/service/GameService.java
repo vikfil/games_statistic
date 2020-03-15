@@ -4,7 +4,6 @@ import com.vikfil.games_statistic.model.GameDescription;
 import com.vikfil.games_statistic.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

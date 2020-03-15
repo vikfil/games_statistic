@@ -19,7 +19,6 @@ public class PaidGameRepositoryImpl implements GameRepository {
     @Override
     public void save(List<GameDescription> gameDescription) {
         redisTemplate.opsForList().rightPushAll(PAID_GAME, gameDescription);
-
     }
 
     @Override
@@ -35,6 +34,5 @@ public class PaidGameRepositoryImpl implements GameRepository {
     @Override
     public void delete() {
         redisTemplate.delete(PAID_GAME);
-
     }
 }
