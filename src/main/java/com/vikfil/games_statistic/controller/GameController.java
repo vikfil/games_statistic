@@ -1,6 +1,6 @@
 package com.vikfil.games_statistic.controller;
 
-import com.vikfil.games_statistic.model.GameDescription;
+import com.vikfil.games_statistic.dto.GameDescriptionDto;
 import com.vikfil.games_statistic.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,22 +20,22 @@ public class GameController {
         this.gameService = gameService;
     }
 
+    private boolean isLimitCorrect(Integer limit) {
+        return limit != null && limit > 0 && limit <= 100;
+    }
+
     @GetMapping("/free")
-    public List<GameDescription> freeGames(@RequestParam(name = "limit", required = false) Integer limit) {
-        return isLimitCorrect(limit) ? gameService.getFreeGameByLimit(limit) : gameService.getFreeGame();
+    public List<GameDescriptionDto> freeGames(@RequestParam(name = "limit", required = false) Integer limit) {
+        return (isLimitCorrect(limit)) ? gameService.getFreeGameByLimit(limit) : gameService.getFreeGame();
     }
 
     @GetMapping("/paid")
-    public List<GameDescription> paidGames(@RequestParam(name = "limit", required = false) Integer limit) {
-        return isLimitCorrect(limit) ? gameService.getPaidGameByLimit(limit) : gameService.getPaidGame();
+    public List<GameDescriptionDto> paidGames(@RequestParam(name = "limit", required = false) Integer limit) {
+        return (isLimitCorrect(limit)) ? gameService.getPaidGameByLimit(limit) : gameService.getPaidGame();
     }
 
     @GetMapping("/grossing")
-    public List<GameDescription> grossingGames(@RequestParam(name = "limit", required = false) Integer limit) {
-        return isLimitCorrect(limit) ? gameService.getGrossingGameByLimit(limit) : gameService.getGrossingGame();
-    }
-
-    private boolean isLimitCorrect(Integer limit) {
-        return limit != null && limit > 0 && limit <= 100;
+    public List<GameDescriptionDto> grossingGames(@RequestParam(name = "limit", required = false) Integer limit) {
+        return (isLimitCorrect(limit)) ? gameService.getGrossingGameByLimit(limit) : gameService.getGrossingGame();
     }
 }

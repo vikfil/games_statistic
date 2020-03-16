@@ -1,4 +1,4 @@
-package com.vikfil.games_statistic.model;
+package com.vikfil.games_statistic.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -7,6 +7,6 @@ import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GamesList implements Serializable {
-    private List<GameDescription> results;
+public class GamesListDto implements Serializable {
+    private List<GameDescriptionDto> results;
 }
